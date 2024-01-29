@@ -5,3 +5,4 @@ app_name = 'Client_Pages'
 urlpatterns = [
     path('', views.home, name='home'),
 ]
+
