@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+{% extends 'Client_Pages/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Single Post Start-->
+<div class="single">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="single-comment">
+                    <h2>My Appointments </h2>
+                    <ul class="comment-list">
+                        {%if apply_app%}
+                        {% for apply_app in apply_app %}
+                        <li class="comment-item">
+                            <div class="comment-body">
+                                <div class="comment-text">
+                                    <h3>{{ apply_app.carModel }}</h3>
+                                    <span>Appointment Date : {{ apply_app.appDate }}</span>
+                                    <p>
+                                        Service Plan :
+                                        {%if apply_app.plan == 'basic' %}
+                                        Basic Cleaning ($25.99)
+                                        {%elif apply_app.plan == 'premium'%}
+                                        Premium Cleaning ($35.99)
+                                        {%elif apply_app.plan == 'complex'%}
+                                        Complex Cleaning ($49.99)
+                                        {%endif%}
+                                    </p>
+                                    <a class="btn" href="">Delete</a>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {%else%}
+                        <h5>No Appointments Reserved ...! </h5>
+                        {%endif%}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <img style="border-radius: 15px;" width="100%" alt="car"
+                        src="https://images.unsplash.com/photo-1641323990095-2110680fe979?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Single Post End-->
+
+{% endblock %}

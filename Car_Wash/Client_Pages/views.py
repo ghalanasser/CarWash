@@ -1,6 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import Application_form
+from .models import Application_by_user
 
 def home(request):
     user_name = request.user
@@ -8,6 +9,34 @@ def home(request):
     if user_name and not str(user_name) == 'AnonymousUser':
         hide_user_name = True
     return render(request, 'Client_Pages/home.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
+
+def my_appointmentsR(request):
+    user_name = request.user
+    hide_user_name = False
+    if user_name and not str(user_name) == 'AnonymousUser':
+        hide_user_name = True
+    return render(request, 'Client_Pages/my_appointments.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
+
+def my_appointments(request):
+    user_name = request.user
+    hide_user_name = False
+    user_id = request.user.id
+    if user_name and not str(user_name) == 'AnonymousUser':
+        hide_user_name = True
+        try:
+            apply_app = get_list_or_404(
+                Application_by_user, applicantId=user_id)
+            print('apply_app',apply_app)
+        except Exception as e:
+            print(e)
+            apply_app = []
+        try:
+            app_by_user = get_list_or_404(Application_by_user, applicantId=user_id)
+            print(app_by_user)
+        except Exception as e:
+            print(e)
+            app_by_user = []
+    return render(request, 'Client_Pages/my_appointments.html', {'hide_user_name': hide_user_name, 'user_name': user_name, 'apply_app': apply_app, 'app_by_user': app_by_user})
 
 def appointment(request):
     user_name = request.user

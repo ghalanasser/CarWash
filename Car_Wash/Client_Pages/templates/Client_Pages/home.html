@@ -20,7 +20,11 @@
                     <p>
                         Shine on ... Drive on ..
                     </p>
-                    <a class="btn btn-custom" href="">Book Now</a>
+                    {% if hide_user_name%}
+                    <a class="btn btn-custom" href="/appointment">Book Now</a>
+                    {% elif not hide_user_name %}
+                    <a class="btn btn-custom" href="/login">Book Now</a>
+                    {%endif%}
                 </div>
             </div>
             <div class="carousel-item">
@@ -33,7 +37,11 @@
                     <p>
                         Gleaming Wheels Happy Feels ..
                     </p>
-                    <a class="btn btn-custom" href="">Book Now</a>
+                    {% if hide_user_name%}
+                    <a class="btn btn-custom" href="/appointment">Book Now</a>
+                    {% elif not hide_user_name %}
+                    <a class="btn btn-custom" href="/login">Book Now</a>
+                    {%endif%}
                 </div>
             </div>
             <div class="carousel-item">
@@ -46,7 +54,11 @@
                     <p>
                         Love what you ride, we’re on your side.
                     </p>
-                    <a class="btn btn-custom" href="">Explore More</a>
+                    {% if hide_user_name%}
+                    <a class="btn btn-custom" href="/appointment">Book Now</a>
+                    {% elif not hide_user_name %}
+                    <a class="btn btn-custom" href="/login">Book Now</a>
+                    {%endif%}
                 </div>
             </div>
         </div>
@@ -137,8 +149,8 @@
                         <div class="location-item">
                             <i class="fa fa-map-marker-alt"></i>
                             <div class="location-text">
-                                <h3>Car Washing Point</h3>
-                                <p>123 Street, New York, USA</p>
+                                <h3>Car Washing Point 1</h3>
+                                <p>123 Olaya, Riyadh, KSA</p>
                                 <p><strong>Call:</strong>+012 345 6789</p>
                             </div>
                         </div>
@@ -147,8 +159,8 @@
                         <div class="location-item">
                             <i class="fa fa-map-marker-alt"></i>
                             <div class="location-text">
-                                <h3>Car Washing Point</h3>
-                                <p>123 Street, New York, USA</p>
+                                <h3>Car Washing Point 2</h3>
+                                <p>123 Naseem, Riyadh, KSA</p>
                                 <p><strong>Call:</strong>+012 345 6789</p>
                             </div>
                         </div>
@@ -157,8 +169,8 @@
                         <div class="location-item">
                             <i class="fa fa-map-marker-alt"></i>
                             <div class="location-text">
-                                <h3>Car Washing Point</h3>
-                                <p>123 Street, New York, USA</p>
+                                <h3>Car Washing Point 3</h3>
+                                <p>123 Taawon, Riyadh, KSA</p>
                                 <p><strong>Call:</strong>+012 345 6789</p>
                             </div>
                         </div>
@@ -167,8 +179,8 @@
                         <div class="location-item">
                             <i class="fa fa-map-marker-alt"></i>
                             <div class="location-text">
-                                <h3>Car Washing Point</h3>
-                                <p>123 Street, New York, USA</p>
+                                <h3>Car Washing Point 4</h3>
+                                <p>123 Safarat, Riyadh, KSA</p>
                                 <p><strong>Call:</strong>+012 345 6789</p>
                             </div>
                         </div>
