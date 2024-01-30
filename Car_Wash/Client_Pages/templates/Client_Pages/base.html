@@ -94,32 +94,28 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Services</a>
                         <a href="price.html" class="nav-item nav-link">Price</a>
-                        <div class="nav-item dropdown">
 
-                        </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
 
                         {% if hide_user_name%}
-                        <a href="/my_appointments" class="nav-item nav-link">My Appointments</a>
+                        <a href="/appointment" class="nav-item nav-link">My Appointments</a>
                         <a href="/logout" class="nav-item nav-link"> Welcome {{user_name}} / Logout</a>
-
-                        <!-- <li class="nav-item"><a href="/my_pets" class="nav-link">My Pets</a></li>
-                        <li class="nav-item"><a href="/logout" class="nav-link"> Welcome {{user_name}} / Logout</a></li> -->
 
                         {% elif not hide_user_name %}
                         <a href="/login" class="nav-item nav-link">Sign In</a>
                         <a href="/register" class="nav-item nav-link">Sign Up</a>
-
-                        <!-- <li class="nav-item"><a href="/login" id="signInNav" class="nav-link">Sign In</a></li>
-                        <li class="nav-item"><a href="/register" id="signUpNav" class="nav-link">Sign Up</a></li> -->
                         {%endif%}
                     </div>
                     <div class="ml-auto">
-                        <a class="btn btn-custom" href="#">Get Appointment</a>
+                        {% if hide_user_name%}
+                        <a class="btn btn-custom" href="/appointment">Get Appointment</a>
+                        {% elif not hide_user_name %}
+                        <a class="btn btn-custom" href="/login">Get Appointment</a>
+                        {%endif%}
                     </div>
                 </div>
             </nav>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'Client_Pages/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- LogIn Start -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8">
+            </div>
+            <div class="col-lg-4 col-md-8">
+                <div class="footer-newsletter">
+                    <h2>SIGN UP</h2>
+                    <form id="signupForm" method="POST" action="" class="contact-form">
+                        {% csrf_token %}
+                        <input type="text" name="username" id="username" class="form-control" placeholder="User Name"
+                            required>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Your E-mail"
+                            required>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                            required>
+                        <input type="password" name="re-password" id="re-password" class="form-control"
+                            placeholder="Re-Password" required>
+                        <button class="btn btn-custom" type="submit" id="signupBtn">Sign Up</button>                        
+                    </form>
+                </div>
+                <p style="color: whitesmoke;"> Already have an account? <a style="color: orangered;" href="/login"> Sign In</a></p>
+
+            </div>
+            <div class="col-lg-4 col-md-8">
+            </div>
+        </div>
+    </div>
+    <div class="container copyright">        
+        {% for message in messages %}
+        <p id="messages" style="color: orangered;">{{message}}</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- LogIn End -->
+
+{% endblock %}

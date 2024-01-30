@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'Client_Pages/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- LogIn Start -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8">
+            </div>
+            <div class="col-lg-4 col-md-8">
+                <div class="footer-newsletter">
+                    <h2>SIGN IN</h2>
+                    <form id="signinForm" method="POST" action="" class="contact-form">
+                        {% csrf_token %}
+                        <input type="text" name="username" id="username" class="form-control" placeholder="User Name" required>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                        <button class="btn btn-custom" type="submit" id="signupBtn">Sign In</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-8">
+            </div>
+        </div>
+    </div>
+    <div class="container copyright">
+        {% for message in messages %}
+        <p id="messages" style="color: orangered;">{{message}}</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- LogIn End -->
+
+{% endblock %}
