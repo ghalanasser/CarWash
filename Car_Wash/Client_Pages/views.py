@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from .forms import Application_form
 
 def home(request):
     user_name = request.user
@@ -15,17 +16,17 @@ def appointment(request):
         hide_user_name = True
     return render(request, 'Client_Pages/appointment.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
 
-# @login_required(login_url='Client_Auths:login')
-    # if request.method == 'POST':
-    #     row = dict()
-    #     row['owner'] = request.user.id
-    #     row['petName'] = request.POST.get('petName')
-    #     row['petBirthdate'] = request.POST.get('petBirthdate')
-    #     row['type'] = request.POST.get('inlineRadioOptions')
-    #     row['breed'] = request.POST.get('breed')
-    #     row['petImage'] = request.POST.get('petImage')
-    #     row['description'] = request.POST.get('description')
-    #     data = AdoptionOfferForm(row)
-    #     data.save()
+@login_required(login_url='Client_Auths:login')
+def apply_appointment(request):
+    if request.method == 'POST':
+        row = dict()
+        row['applicantId'] = request.user.id
+        row['userName'] = request.POST.get('userName')
+        row['userEmail'] = request.POST.get('userEmail')
+        row['carModel'] = request.POST.get('carModel')
+        row['plan'] = request.POST.get('plan')
+        row['appDate'] = request.POST.get('appDate')
+        data = Application_form(row)
+        data.save()
     
-    # return redirect('Pets:pets')
+    return redirect('Client_Pages:home')
