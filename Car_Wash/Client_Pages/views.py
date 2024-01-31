@@ -61,3 +61,25 @@ def apply_appointment(request):
         data.save()
     
     return redirect('Client_Pages:my_appointments')
+
+def services(request):
+    user_name = request.user
+    hide_user_name = False
+    if user_name and not str(user_name) == 'AnonymousUser':
+        hide_user_name = True
+    return render(request, 'Client_Pages/services.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
+
+def about(request):
+    user_name = request.user
+    hide_user_name = False
+    if user_name and not str(user_name) == 'AnonymousUser':
+        hide_user_name = True
+    return render(request, 'Client_Pages/about.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
+
+def contact(request):
+    user_name = request.user
+    hide_user_name = False
+    if user_name and not str(user_name) == 'AnonymousUser':
+        hide_user_name = True
+    return render(request, 'Client_Pages/contact.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
+
