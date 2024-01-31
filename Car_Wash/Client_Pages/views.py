@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_list_or_404, get_object_or_40
 from django.contrib.auth.decorators import login_required
 from .forms import Application_form
 from .models import Application_by_user
+from django.http import JsonResponse
+# from django.urls import reverse
+
 
 def home(request):
     user_name = request.user
@@ -9,13 +12,6 @@ def home(request):
     if user_name and not str(user_name) == 'AnonymousUser':
         hide_user_name = True
     return render(request, 'Client_Pages/home.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
-
-def my_appointmentsR(request):
-    user_name = request.user
-    hide_user_name = False
-    if user_name and not str(user_name) == 'AnonymousUser':
-        hide_user_name = True
-    return render(request, 'Client_Pages/my_appointments.html', {'hide_user_name': hide_user_name, 'user_name': user_name})
 
 def my_appointments(request):
     user_name = request.user
@@ -38,6 +34,12 @@ def my_appointments(request):
             app_by_user = []
     return render(request, 'Client_Pages/my_appointments.html', {'hide_user_name': hide_user_name, 'user_name': user_name, 'apply_app': apply_app, 'app_by_user': app_by_user})
 
+
+def delete_object(request, object_id):
+    object = get_object_or_404(Application_by_user, id=object_id)
+    object.delete()        
+    return redirect('Client_Pages:my_appointments')
+
 def appointment(request):
     user_name = request.user
     hide_user_name = False
@@ -58,4 +60,4 @@ def apply_appointment(request):
         data = Application_form(row)
         data.save()
     
-    return redirect('Client_Pages:home')
+    return redirect('Client_Pages:my_appointments')

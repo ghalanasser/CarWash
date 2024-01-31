@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-
                 <div class="single-comment">
                     <h2>My Appointments </h2>
                     <ul class="comment-list">
+                        <!-- Starting  the loop rendering from database -->
                         {%if apply_app%}
                         {% for apply_app in apply_app %}
                         <li class="comment-item">
@@ -32,7 +32,7 @@
                                         Complex Cleaning ($49.99)
                                         {%endif%}
                                     </p>
-                                    <a class="btn" href="">Delete</a>
+                                    <a class="btn" href="/delete_object/{{ apply_app.id }}">Delete</a>
                                 </div>
                             </div>
                         </li>
